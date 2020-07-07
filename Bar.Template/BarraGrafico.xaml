@@ -1,0 +1,59 @@
+﻿<UserControl
+    x:Class="BarGraphic.Template.BarraGrafico"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal">
+        <ItemsControl ItemsSource="{Binding GraficoLista}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Width="{Binding Duracion}"
+                        Height="50"
+                        HorizontalAlignment="Left"
+                        Background="Red"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <ItemsControl ItemsSource="{Binding SeccionLista}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle
+                                        Width="{Binding Duracion}"
+                                        Height="Auto"
+                                        Margin="1,0">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="#565656" />
+                                                <GradientStop Offset="0.862" Color="{Binding Color}" />
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <ItemsPresenter />
+                </ControlTemplate>
+            </ItemsControl.Template>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>
